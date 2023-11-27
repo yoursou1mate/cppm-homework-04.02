@@ -47,6 +47,8 @@ public:
        full_address.append(city).append(", ").append(street).append(", ").append(house_1).append(", ").append(appartment_1);
        return full_address;
    }
+    
+    
 };
 
 
@@ -99,9 +101,25 @@ int main(int argc, const char * argv[]) {
 
     fout << n << std::endl;
     
+    for (int i = 1; i<n; ++i)
+    {
+        for (int j = 0; j < n-1; ++j)
+        {
+            if(Address.get_output_address()[j] < Address.get_output_address()[j+1])
+            {
+                // Обмен местами
+                int temp = Address.get_output_address()[j];
+                Address.get_output_address()[j] = Address.get_output_address()[j+1];
+                Address.get_output_address()[j+1] = temp;
+                
+            }
+            
+        }
+        
+    }
+    
     for (int i = 0; i<n; ++i)
     {
-        std::sort(arr[i].get_output_address().begin(), arr[i].get_output_address().end());
         std::cout << arr[i].get_output_address() << std::endl;
     }
        
