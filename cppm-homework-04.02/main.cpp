@@ -21,7 +21,7 @@ private:
     std::string street;
     int house;
     int appartment;
-
+    
 public:
     address (std::string city, std::string street, int house, int appartment)
     {
@@ -37,16 +37,24 @@ public:
         house = 1;
         appartment = 1;
     }
+    
+    
+    std::string get_output_address ()
+    {
+        std::string full_address;
+        std::string house_1 = std::to_string(house);
+        std::string appartment_1 = std::to_string(appartment);
+        full_address.append(city).append(", ").append(street).append(", ").append(house_1).append(", ").append(appartment_1);
+        return full_address;
+    }
+    
+    std::string get_city ()
+    {
+        return city;
+    }
+
 
     
-   std::string get_output_address ()
-    {
-       std::string full_address;
-       std::string house_1 = std::to_string(house);
-       std::string appartment_1 = std::to_string(appartment);
-       full_address.append(city).append(", ").append(street).append(", ").append(house_1).append(", ").append(appartment_1);
-       return full_address;
-   }
     
     
 };
@@ -79,7 +87,7 @@ int main(int argc, const char * argv[]) {
     std::string s;
     int h;
     int a;
-    address Address;
+    
 
     fin.open("in.txt");
     fin >> n;
@@ -101,22 +109,21 @@ int main(int argc, const char * argv[]) {
 
     fout << n << std::endl;
     
-    for (int i = 1; i<n; ++i)
+    for (int i = 0; i < n-1; i++)
     {
-        for (int j = 0; j < n-1; ++j)
+        for (int j = 0; j < n-i-1; j++)
         {
-            if(Address.get_output_address()[j] < Address.get_output_address()[j+1])
+            if (arr[j].get_city() > arr[j+1].get_city())
             {
-                // Обмен местами
-                int temp = Address.get_output_address()[j];
-                Address.get_output_address()[j] = Address.get_output_address()[j+1];
-                Address.get_output_address()[j+1] = temp;
-                
+                address temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j] = temp;
             }
-            
         }
-        
     }
+    
+
+
     
     for (int i = 0; i<n; ++i)
     {
