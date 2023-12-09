@@ -117,7 +117,7 @@ int main(int argc, const char * argv[]) {
             {
                 address temp = arr[j];
                 arr[j] = arr[j+1];
-                arr[j] = temp;
+                arr[j+1] = temp;
             }
         }
     }
@@ -127,7 +127,7 @@ int main(int argc, const char * argv[]) {
     
     for (int i = 0; i<n; ++i)
     {
-        std::cout << arr[i].get_output_address() << std::endl;
+        fout << arr[i].get_output_address() << std::endl;
     }
        
     delete[] arr;
